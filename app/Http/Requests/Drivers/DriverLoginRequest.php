@@ -26,7 +26,6 @@ class DriverLoginRequest extends FormRequest
         return [
             'phone_number' => 'required',
             'password' => 'required',
-            
         ];
     }
 }
