@@ -22,5 +22,26 @@ class VehicleRepository extends BaseRepository
         return $vehicle;
     }
     
+    public function createVehicle(Array $request)
+    {
+        DB::beginTransaction();
+            try {
+                $vehicle = $this->model->newQuery()->create([
+                    "plate"      => $request['plate'] ?? null,
+                    "year"       => $request['year'] ?? null,
+                    "model"      => $request['model'] ?? null,
+                    "brand"      => $request['brand'] ?? null,
+                    "color"      => $request['color'] ?? null,
+                    "renavam"    => $request['renavam'] ?? null,
+                    "ride_model" => $request['ride_model']??RideModelEnum::Basic,
+                ]);
+                DB::commit();
+                return $vehicle;
+            } catch (Exception $e) {
+                DB::rollBack();
+                return $e->getMessage();
+            }
+    }
+
     
 }
