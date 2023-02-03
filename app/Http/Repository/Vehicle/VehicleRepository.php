@@ -42,6 +42,50 @@ class VehicleRepository extends BaseRepository
                 return $e->getMessage();
             }
     }
+    
+    public function updateVehicle(int $id, Array $request)
+    {
+        
+        $vehicle = $this->model->newQuery()->where('id', $id)->first();
+        if($vehicle){
+            DB::beginTransaction();
+            try {
+                
+                if (!empty($request['plate'])) {
+                    $vehicle->plate = $request['plate'];
+                }
+                if (!empty($request['year'])) {
+                    $vehicle->year = $request['year'];
+                }
+                if (!empty($request['model'])) {
+                    $vehicle->model = $request['model'];
+                }
+                if (!empty($request['brand'])) {
+                    $vehicle->brand = $request['brand'];
+                }
+                if (!empty($request['color'])) {
+                    $vehicle->color = $request['color'];
+                }
+                if (!empty($request['renavam'])) {
+                    $vehicle->renavam = $request['renavam'];
+                }
+                if (!empty($request['ride_model'])) {
+                    $vehicle->ride_model = $request['ride_model'];
+                }
+                $vehicle->save();
+                
+                DB::commit();
+                return $vehicle;
 
+
+            } catch (Exception $e) {
+                DB::rollBack();
+                return $e->getMessage();
+            }
+            
+        }
+        return 'Nenhum veículo encontrado';
+    }
+    
     
 }
