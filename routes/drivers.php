@@ -14,12 +14,6 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('login', DriverLoginController::class);
 Route::post('register', DriverRegisterController::class);
-Route::post('recover_password', DriverRecouveryPassController::class);
 
 Route::middleware(['driver.token'])->group(function () {
-    //deleta a conta do motorista        
-    Route::get('delete_account', deleteAccountController::class);
-
-    
-    
 });
