@@ -35,13 +35,8 @@ class DriverCheckToken
 
                 $driver = Driver::where('phone_number', $data['payload']->data->phoneNumber)->first();
                 if ($driver) {
-                    // $accessToken = AccessToken::where('token', $data['header'])->where('entity_id',$driver->id)->exists();
-                        return $next($request);
-                    // if($accessToken){
-                    //     return $next($request);
-                    // }else{
-                    //     return response()->json(array('status' => "error", 'message' => "Token inválido!"));
-                    // }
+                    $request->headers->set('Authorization', $data);
+                    return $next($request);
                 } else {
                     return $this->responseError([
                         'error' => 'Token inválido!',
