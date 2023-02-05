@@ -24,5 +24,15 @@ class UserActionsRepository extends BaseRepository
         return !is_string($this->driverRepo->deleteById($id))?true:false;
     }
    
-    
+    public function listDriver(){
+        return $this->driverRepo->list();
+    }
+    public function updateDriver(Array $request){
+        return $this->driverRepo->updateProfileById($request['driver_id'],$request);
+    }
+
+    public function createDriver(Array $request){
+        $driverRepo = new DriverRepository(new Driver());
+        return $driverRepo->register($request);
+    }
 }
