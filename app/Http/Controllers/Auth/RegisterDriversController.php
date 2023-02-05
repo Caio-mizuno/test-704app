@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Drivers\DriverLoginRequest;
 use App\Http\Requests\Drivers\DriverRegisterRequest;
 use App\Repository\Driver\DriverRepository;
 use Illuminate\Http\Request;
@@ -17,8 +16,6 @@ class RegisterDriversController extends Controller
     }
 
     public function __invoke(DriverRegisterRequest $request){
-        $data = $request->all();
-        
         $driver = $this->driverRepo->register($request->all());
         
         if($driver){
