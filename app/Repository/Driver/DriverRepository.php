@@ -5,9 +5,12 @@ namespace App\Repository\Driver;
 use App\Enums\AccessTokenEnum;
 use App\Models\AccessToken;
 use App\Models\Driver;
+use App\Models\Vehicle;
 use App\Repository\BaseRepository;
 use App\Repository\EntityRepositoryInterface;
+use App\Repository\Vehicle\VehicleRepository;
 use Exception;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class DriverRepository extends BaseRepository implements EntityRepositoryInterface
@@ -54,13 +57,10 @@ class DriverRepository extends BaseRepository implements EntityRepositoryInterfa
         if (!empty($driver)) {
             
             //Verificação de senha conforme o tipo de Password
-            if($driver->password_type == 'md5'){
-                if($driver->password != md5($password)){
-                    return 'Senha incorreta';
-                }else if(!Hash::check($password,$driver->password)){
-                    return 'Senha incorreta';
-                }
+            if(!Hash::check($password,$driver->password)){
+                return 'Senha incorreta';
             }
+           
 
             //Verificando se o motorista está bloqueado
             if ($driver->is_blocked == true) {
@@ -95,7 +95,12 @@ class DriverRepository extends BaseRepository implements EntityRepositoryInterfa
 
             DB::beginTransaction();
             try {
+
+                $vehicleRepo = new VehicleRepository(new Vehicle);
+                $new_vehicle = $vehicleRepo->createVehicle($request);
+                
                 $data = [
+                    'vehicle_id'=>$new_vehicle->id,
                     'first_name' => $request['first_name'],
                     'last_name' => $request['last_name'],
                     'payment_style' => json_encode(["money", "credit_card"]),
@@ -122,7 +127,6 @@ class DriverRepository extends BaseRepository implements EntityRepositoryInterfa
         $personal_access = AccessToken::where('entity', 'driver')->where('entity_id', $driver->id)->first();
         if($personal_access){
             $personal_access->update([
-                'name'=>$driver->first_name.' '.$driver->last_name,
                 'token'=>$token,
                 'expires_at' => date('Y-m-d',strtotime('+1 DAY'))
             ]);
@@ -130,7 +134,6 @@ class DriverRepository extends BaseRepository implements EntityRepositoryInterfa
         }else{
             //criando registro de token
             $personal_access = AccessToken::create([
-                'name'=>$driver->first_name.' '.$driver->last_name,
                 'token'=>$token,
                 'entity' => AccessTokenEnum::Driver,
                 'entity_id' => $driver->id,
