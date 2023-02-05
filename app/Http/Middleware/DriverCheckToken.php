@@ -4,11 +4,8 @@ namespace App\Http\Middleware;
 
 use App\Models\AccessToken;
 use App\Models\Driver;
-use App\Models\People;
 use App\Repository\Driver\DriverRepository;
 use Closure;
-use Illuminate\Support\Facades\Redirect;
-use \GuzzleHttp\Client;
 use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\DB;
 use App\Traits\ResponseJsonTrait;
@@ -26,30 +23,35 @@ class DriverCheckToken
     {
 
         try {
-            
+
 
             $tokenDecoded = json_decode($request->header('Authorization'));
 
             if (!is_object($tokenDecoded)) {
                 $data = jwt_decode($request->header('Authorization'));
 
-                $driver = Driver::where('phone_number', $data['payload']->data->phoneNumber)->first();
+                $driver = Driver::where('phone_number', $data['payload']->data->phone_number)->first();
                 if ($driver) {
-                    $request->headers->set('Authorization', $data);
-                    return $next($request);
+                     //Verificando se o token está válido
+                    $check = $this->driverRepository->checkToken($driver->access_token);
+                    if ($check) {
+                        $request->headers->set('Authorization', $data);
+                        return $next($request);
+                    } else {
+                        return $this->responseError([
+                            'error' => 'Necessário realizar o login novamente!',
+                        ]);
+                    }
                 } else {
                     return $this->responseError([
-                        'error' => 'Token inválido!',
+                        'error' => 'Motorista não encontrado!',
                     ]);
                 }
-                
             } else {
                 return $this->responseError([
                     'error' => 'Token inválido!',
                 ]);
             }
-
-            
         } catch (\Exception $e) {
             return $this->responseError([
                 'error' => 'Token inválido!',
