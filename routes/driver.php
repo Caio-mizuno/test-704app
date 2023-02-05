@@ -2,7 +2,7 @@
 
 use App\Http\Controllers\Auth\LoginDriversController;
 use App\Http\Controllers\Auth\RegisterDriversController;
-
+use App\Http\Controllers\Drivers\getProfileController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,4 +20,5 @@ Route::post('login', LoginDriversController::class);
 Route::post('register', RegisterDriversController::class);
 
 Route::middleware(['driver.token'])->group(function () {
+    Route::get('profile', getProfileController::class);
 });
