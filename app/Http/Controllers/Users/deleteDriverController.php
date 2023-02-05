@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Users;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\Users\DriverIdRequest;
-use App\Http\Requests\Users\UserRegisterRequest;
 use App\Repository\User\UserActionsRepository;
-use App\Repository\User\UserRepository;
 use Illuminate\Http\Request;
 
 class deleteDriverController extends Controller
