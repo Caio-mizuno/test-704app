@@ -14,12 +14,10 @@ class LoginDriversController extends Controller
     public function __construct(DriverRepository $driver){
         $this->driverRepo = $driver;
     }
-
+    
     public function __invoke(DriverLoginRequest $request){
         $data = $request->all();
-        
         $driver = $this->driverRepo->login($data['phone_number'], $data['password']);
-        
         if($driver){
 
             $token = MakeJwt([
@@ -34,6 +32,8 @@ class LoginDriversController extends Controller
             $driver->access_token = $token;
             $driver->save();
             
+            //Criando registro de login com Token de expiração
+            $this->driverRepo->personalAccessCreate($driver, $token);
             
             return  $this->responseSuccess(
                 array(
