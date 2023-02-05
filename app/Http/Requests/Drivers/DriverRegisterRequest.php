@@ -34,6 +34,7 @@ class DriverRegisterRequest extends FormRequest
             'birth_date'         => 'required',
             'license'            => 'required',
             'dt_license_expired' => 'required',
+            'payment_style'      => 'nullable',   
 
             "plate"      => 'required',
             "year"       => 'nullable',
