@@ -24,7 +24,7 @@ class DriverProfileRepository extends BaseRepository
         if (!empty($driver)) {
             return [
                 "first_name" => $driver->first_name,
-                "phone_number" => $driver->telefone,
+                "phone_number" => $driver->phone_number,
                 "email" => $driver->email,
                 "cpf" => $driver->cpf,
                 "last_name" => $driver->last_name,
@@ -60,7 +60,10 @@ class DriverProfileRepository extends BaseRepository
             }
 
             if (!empty($request['phone_number'])) {
-                $driver->phone_number = $request['phone_number'];
+                $check = $this->model->newQuery()
+                            ->where('phone_number', $request['phone_number'])
+                            ->exists();
+                $driver->phone_number = ($check == false)?$request['phone_number']:$driver->phone_number;
             }
 
             if (!empty($request['gender'])) {
@@ -100,6 +103,14 @@ class DriverProfileRepository extends BaseRepository
         $driver = $this->model->newQuery()->where('id', $id)->first();
         if ($driver) {
 
+
+            if (!empty($request['phone_number'])) {
+                $check = $this->model->newQuery()
+                            ->where('phone_number', $request['phone_number'])
+                            ->exists();
+                $driver->phone_number = ($check == false)?$request['phone_number']:$driver->phone_number;
+            }
+
             if (!empty($request['cpf'])) {
                     $driver->cpf = $request['cpf'];
             }
@@ -114,10 +125,6 @@ class DriverProfileRepository extends BaseRepository
 
             if (!empty($request['email'])) {
                 $driver->email = $request['email'];
-            }
-
-            if (!empty($request['phone_number'])) {
-                $driver->phone_number = $request['phone_number'];
             }
 
             if (!empty($request['gender'])) {
@@ -176,7 +183,13 @@ class DriverProfileRepository extends BaseRepository
         } else
             return 'Motorista inexistente ou não localizado';
     }
-    
+    public function list(){
+        $drivers =  $this->model->newQuery()->paginate();
+        if ($drivers) {
+            return $drivers;
+        } else
+            return 'Motoristas inexistentes ou não localizados';
+    }
 
     
 }
