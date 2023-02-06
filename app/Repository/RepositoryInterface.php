@@ -6,6 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 interface RepositoryInterface
 {
-    public function findById(int $id): ?Model;
-    public function findByPlate(string $id): ?Model;
+    public function findById(int $id);
 }
