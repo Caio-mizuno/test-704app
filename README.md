@@ -33,6 +33,7 @@ Trata-se de um projeto construido para demonstrar minhas habilidades com o larav
 3. Agora é só iniciar o serviço, com `php artisan serve`
 4. Opcional, em um terminar diferente, para visualizar as rotas disponíveis basta executar o comando `php artisan route:list`
 5. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost/docs`
+6. O sistema de Autenticação utilizado foi JWT, então para rotas que não são publicas, utilize `Authorization Bearer {TOKEN}`
 
 
 
