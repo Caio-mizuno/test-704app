@@ -7,60 +7,36 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## Sobre o projeto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+Trata-se de um projeto construido para demonstrar minhas habilidades com o laravel em um teste para uma vaga de emprego. E seus requisitos são:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+- Autenticação (via Token usando JWT, Laravel Sanctum ou algo equivalente)
+- Listagem de motoristas
+- Cadastro de um motorista. Importante que tenha campos para dados do veículo
+- Edição de dados de um motorista
+- Exclusão de um motorista
+- Deve ser possível também buscar um motorista pelo nome, documento ou pela placa do veículo
+- A stack deve ser da seguinte forma:
+    * Linguagem PHP
+    * Desenvolver backend com algum framework abaixo:
+    * Laravel (PHP)
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+- Utilizar algum banco de dados relacional, mysql, oracle, etc.
+- As únicas rotas públicas da aplicação deverão ser a de login e cadastro
+- Cada motorista só poderá ter um carro ativo cadastrado
 
-## Learning Laravel
+## Instruções para rodar o projeto
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+1. Necessário instalar todas as dependências do projeto, para isso utilize: `composer install`
+2. Necessário estruturar o banco de dados do projeto, para isso utilize: `php artisan migrate`
+3. Agora é só iniciar o serviço, com `php artisan serve`
+4. Opcional, em um terminar diferente, para visualizar as rotas disponíveis basta executar o comando `php artisan route:list`
+5. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost/docs`
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-## Laravel Sponsors
+## Agradecimento
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
-
-### Premium Partners
-
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+É um projetinho bem simples, mas espero que gostem da estrutura. E se quiserem compartilhar algo ou dar um feedback, é muito impotante para mim irei apreciar com carinho seja ele positivo ou negativo.
+Obrigado, até mais.
