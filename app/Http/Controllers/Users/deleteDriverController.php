@@ -18,7 +18,7 @@ class deleteDriverController extends Controller
     public function __invoke(DriverIdRequest $request){
         $user = $this->userRepo->deleteDriver($request->driver_id);
         
-        if($user){
+        if($user == true){
             return $this->responseSuccess(
                 array('message' => 'Motorista deletado com sucesso!',)
             );
