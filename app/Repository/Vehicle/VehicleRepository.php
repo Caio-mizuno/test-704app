@@ -8,8 +8,9 @@ use Exception;
 use Illuminate\Support\Facades\DB;
 use App\Enums\RideModelEnum;
 use App\Models\Driver;
+use App\Repository\RepositoryInterface;
 
-class VehicleRepository extends BaseRepository
+class VehicleRepository implements RepositoryInterface
 {
     private $model;
     public function __construct(Vehicle $model)
@@ -86,6 +87,12 @@ class VehicleRepository extends BaseRepository
         }
         return 'Nenhum veículo encontrado';
     }
-    
+    public function findById(int $modelId, array $columns = ['*'])
+    {
+        return $this->model->newQuery()
+        ->select($columns)
+        ->where('id', $modelId)
+        ->first();
+    }
     
 }
