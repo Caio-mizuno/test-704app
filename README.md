@@ -31,7 +31,7 @@ Trata-se de um projeto construido para demonstrar minhas habilidades com o larav
 1. Necessário instalar todas as dependências do projeto, para isso utilize: `composer install`
 2. Agora é só iniciar o serviço, com `php artisan serve`
 3. Opcional, em um terminar diferente, para visualizar as rotas disponíveis basta executar o comando `php artisan route:list`
-4. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador.
+4. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost/docs`
 
 
 
