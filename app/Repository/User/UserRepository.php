@@ -4,10 +4,10 @@ namespace App\Repository\User;
 
 use App\Enums\AccessTokenEnum;
 use App\Models\AccessToken;
+use App\Models\User;
 use App\Repository\BaseRepository;
 use App\Repository\EntityRepositoryInterface;
 use Exception;
-use Illuminate\Foundation\Auth\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
@@ -105,7 +105,7 @@ class UserRepository extends BaseRepository implements EntityRepositoryInterface
         if($personal_access){
             $personal_access->update([
                 'token'=>$token,
-                'expires_at' => date('Y-m-d',strtotime('+1 DAY'))
+                'expires_at' => date('Y-m-d H:i:s',strtotime('+1 DAY'))
             ]);
 
         }else{
@@ -114,9 +114,16 @@ class UserRepository extends BaseRepository implements EntityRepositoryInterface
                 'token'=>$token,
                 'entity' => AccessTokenEnum::User,
                 'entity_id' => $user->id,
-                'expires_at' => date('Y-m-d',strtotime('+1 DAY'))
+                'expires_at' => date('Y-m-d H:i:s',strtotime('+1 DAY'))
             ]);
         }
         return $personal_access->token;
+    }
+    public function findById(int $modelId, array $columns = ['*'])
+    {
+        return $this->model->newQuery()
+        ->select($columns)
+        ->where('id', $modelId)
+        ->first();
     }
 }
