@@ -1,0 +1,879 @@
+name: Endpoints
+description: ''
+endpoints:
+  -
+    httpMethods:
+      - POST
+    uri: v1/driver/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      phone_number:
+        name: phone_number
+        description: ''
+        required: true
+        example: sit
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: itaque
+        type: string
+        custom: []
+    cleanBodyParameters:
+      phone_number: sit
+      password: itaque
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Problemas ao encontrar Motorista. Telefone ou senha podem estar inv\u00e1lidos!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '59'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/driver/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      phone_number:
+        name: phone_number
+        description: ''
+        required: true
+        example: accusantium
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: ab
+        type: string
+        custom: []
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: aut
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: est
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: ''
+        required: true
+        example: at
+        type: string
+        custom: []
+      birth_date:
+        name: birth_date
+        description: ''
+        required: true
+        example: sed
+        type: string
+        custom: []
+      license:
+        name: license
+        description: ''
+        required: true
+        example: quia
+        type: string
+        custom: []
+      dt_license_expired:
+        name: dt_license_expired
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        custom: []
+      payment_style:
+        name: payment_style
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      plate:
+        name: plate
+        description: ''
+        required: true
+        example: suscipit
+        type: string
+        custom: []
+      year:
+        name: year
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      model:
+        name: model
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      brand:
+        name: brand
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      color:
+        name: color
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      renavam:
+        name: renavam
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      ride_model:
+        name: ride_model
+        description: ''
+        required: true
+        example: dignissimos
+        type: string
+        custom: []
+    cleanBodyParameters:
+      phone_number: accusantium
+      password: ab
+      first_name: aut
+      email: est
+      gender: at
+      birth_date: sed
+      license: quia
+      dt_license_expired: voluptas
+      plate: suscipit
+      ride_model: dignissimos
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"driver":"Attempt to read property \"id\" on string"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '58'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/driver/profile
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '57'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/user/login
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      email:
+        name: email
+        description: ''
+        required: true
+        example: incidunt
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: sed
+        type: string
+        custom: []
+    cleanBodyParameters:
+      email: incidunt
+      password: sed
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Problemas ao encontrar Usu\u00e1rio. Telefone ou senha podem estar inv\u00e1lidos!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '56'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/user/register
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      name:
+        name: name
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: voluptas
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: dolor
+        type: string
+        custom: []
+    cleanBodyParameters:
+      name: et
+      email: voluptas
+      password: dolor
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '{"success":true,"user":{"name":"et","email":"voluptas","updated_at":"2023-02-06T15:23:00.000000Z","created_at":"2023-02-06T15:23:00.000000Z","id":14}}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '55'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/user/drivers
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '54'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: v1/user/driver
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      driver_id:
+        name: driver_id
+        description: ''
+        required: true
+        example: mollitia
+        type: string
+        custom: []
+    cleanBodyParameters:
+      driver_id: mollitia
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '53'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/user/driver
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      phone_number:
+        name: phone_number
+        description: ''
+        required: true
+        example: nulla
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: true
+        example: consequuntur
+        type: string
+        custom: []
+      first_name:
+        name: first_name
+        description: ''
+        required: true
+        example: maiores
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: true
+        example: velit
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: ''
+        required: true
+        example: consectetur
+        type: string
+        custom: []
+      birth_date:
+        name: birth_date
+        description: ''
+        required: true
+        example: similique
+        type: string
+        custom: []
+      license:
+        name: license
+        description: ''
+        required: true
+        example: et
+        type: string
+        custom: []
+      dt_license_expired:
+        name: dt_license_expired
+        description: ''
+        required: true
+        example: assumenda
+        type: string
+        custom: []
+      payment_style:
+        name: payment_style
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      plate:
+        name: plate
+        description: ''
+        required: true
+        example: quisquam
+        type: string
+        custom: []
+      year:
+        name: year
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      model:
+        name: model
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      brand:
+        name: brand
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      color:
+        name: color
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      renavam:
+        name: renavam
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      ride_model:
+        name: ride_model
+        description: ''
+        required: true
+        example: est
+        type: string
+        custom: []
+    cleanBodyParameters:
+      phone_number: nulla
+      password: consequuntur
+      first_name: maiores
+      email: velit
+      gender: consectetur
+      birth_date: similique
+      license: et
+      dt_license_expired: assumenda
+      plate: quisquam
+      ride_model: est
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '52'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - PUT
+    uri: v1/user/driver
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      driver_id:
+        name: driver_id
+        description: ''
+        required: true
+        example: tempora
+        type: string
+        custom: []
+      phone_number:
+        name: phone_number
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      password:
+        name: password
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      first_name:
+        name: first_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      last_name:
+        name: last_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      email:
+        name: email
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      gender:
+        name: gender
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      birth_date:
+        name: birth_date
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      license:
+        name: license
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      dt_license_expired:
+        name: dt_license_expired
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      payment_style:
+        name: payment_style
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    cleanBodyParameters:
+      driver_id: tempora
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '51'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - DELETE
+    uri: v1/user/driver
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      driver_id:
+        name: driver_id
+        description: ''
+        required: true
+        example: temporibus
+        type: string
+        custom: []
+    cleanBodyParameters:
+      driver_id: temporibus
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '50'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
+    uri: v1/user/driver/search
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters:
+      first_name:
+        name: first_name
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      plate:
+        name: plate
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      cpf:
+        name: cpf
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+      license:
+        name: license
+        description: ''
+        required: false
+        example: null
+        type: string
+        custom: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '49'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
