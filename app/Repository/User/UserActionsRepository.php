@@ -49,4 +49,9 @@ class UserActionsRepository extends BaseRepository
         $driverRepo = new DriverRepository(new Driver());
         return $driverRepo->register($request);
     }
+
+    public function searchDriver(Array $request){
+        $driverRepo = new DriverRepository(new Driver());
+        return $driverRepo->searchDriver($request);
+    }
 }
