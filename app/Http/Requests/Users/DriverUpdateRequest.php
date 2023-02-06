@@ -27,15 +27,15 @@ class DriverUpdateRequest extends FormRequest
             
             'driver_id'          => 'required',
 
-            'phone_number'       => 'required',
-            'password'           => 'required',
-            'first_name'         => 'required',
+            'phone_number'       => 'nullable',
+            'password'           => 'nullable',
+            'first_name'         => 'nullable',
             'last_name'          => 'nullable',
-            'email'              => 'required',
-            'gender'             => 'required',
-            'birth_date'         => 'required',
-            'license'            => 'required',
-            'dt_license_expired' => 'required',
+            'email'              => 'nullable',
+            'gender'             => 'nullable',
+            'birth_date'         => 'nullable',
+            'license'            => 'nullable',
+            'dt_license_expired' => 'nullable',
             'payment_style'      => 'nullable', 
         ];
     }
