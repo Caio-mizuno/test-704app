@@ -5,12 +5,13 @@ namespace App\Repository\Driver;
 use App\Models\Driver;
 use App\Models\Vehicle;
 use App\Repository\BaseRepository;
+use App\Repository\RepositoryInterface;
 use App\Repository\Vehicle\VehicleRepository;
 use Exception;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
-class DriverProfileRepository extends BaseRepository
+class DriverProfileRepository implements RepositoryInterface
 {
     private $model;
     public function __construct(Driver $model)
@@ -32,6 +33,7 @@ class DriverProfileRepository extends BaseRepository
                 "gender" => $driver->gender,
                 "license" => $driver->license,
                 "dt_license_expired" => $driver->dt_license_expired,
+                "payment_style" => json_decode($driver->payment_style),
             ];
         } else
             return "Motorista inexistente ou não localizado.";
@@ -75,15 +77,15 @@ class DriverProfileRepository extends BaseRepository
             }
 
             if (!empty($request['dt_license_expired'])) {
-                $driver->dt_license_expired = $request['dt_license_expired'];
+                $driver->dt_license_expired = date("Y-m-d",strtotime($request['dt_license_expired']));
             }
 
             if (!empty($request['password'])) {
                 $driver->password = Hash::make($request['password']);
             }
 
-            if (!empty($request['payment_methods'])) {
-                $driver->gender = json_encode($request['payment_methods']);
+            if (!empty($request['payment_style'])) {
+                $driver->payment_style = json_encode($request['payment_style']);
             }
             DB::beginTransaction();
             try{
@@ -136,15 +138,15 @@ class DriverProfileRepository extends BaseRepository
             }
 
             if (!empty($request['dt_license_expired'])) {
-                $driver->dt_license_expired = $request['dt_license_expired'];
+                $driver->dt_license_expired = date("Y-m-d",strtotime($request['dt_license_expired']));
             }
 
             if (!empty($request['password'])) {
                 $driver->password = Hash::make($request['password']);
             }
 
-            if (!empty($request['payment_methods'])) {
-                $driver->gender = json_encode($request['payment_methods']);
+            if (!empty($request['payment_style'])) {
+                $driver->payment_style = json_encode($request['payment_style']);
             }
 
             DB::beginTransaction();
@@ -190,6 +192,11 @@ class DriverProfileRepository extends BaseRepository
         } else
             return 'Motoristas inexistentes ou não localizados';
     }
-
-    
+    public function findById(int $modelId, array $columns = ['*'])
+    {
+        return $this->model->newQuery()
+        ->select($columns)
+        ->where('id', $modelId)
+        ->first();
+    }
 }
