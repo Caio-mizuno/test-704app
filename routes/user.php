@@ -5,6 +5,7 @@ use App\Http\Controllers\Auth\RegisterUsersController;
 use App\Http\Controllers\Users\createDriverController;
 use App\Http\Controllers\Users\deleteDriverController;
 use App\Http\Controllers\Users\listDriversController;
+use App\Http\Controllers\Users\searchDriverController;
 use App\Http\Controllers\Users\showDriverController;
 use App\Http\Controllers\Users\updateDriverController;
 use Illuminate\Http\Request;
@@ -28,4 +29,5 @@ Route::middleware(['user.token'])->group(function () {
     Route::post('driver', createDriverController::class);
     Route::put('driver', updateDriverController::class);
     Route::delete('driver', deleteDriverController::class);
+    Route::post('driver/search', searchDriverController::class);
 });
