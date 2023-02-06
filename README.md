@@ -29,9 +29,10 @@ Trata-se de um projeto construido para demonstrar minhas habilidades com o larav
 ## Instruções para rodar o projeto
 
 1. Necessário instalar todas as dependências do projeto, para isso utilize: `composer install`
-2. Agora é só iniciar o serviço, com `php artisan serve`
-3. Opcional, em um terminar diferente, para visualizar as rotas disponíveis basta executar o comando `php artisan route:list`
-4. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost/docs`
+2. Necessário estruturar o banco de dados do projeto, para isso utilize: `php artisan migrate`
+3. Agora é só iniciar o serviço, com `php artisan serve`
+4. Opcional, em um terminar diferente, para visualizar as rotas disponíveis basta executar o comando `php artisan route:list`
+5. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost/docs`
 
 
 
