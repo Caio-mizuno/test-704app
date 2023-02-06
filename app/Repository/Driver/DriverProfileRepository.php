@@ -172,8 +172,12 @@ class DriverProfileRepository implements RepositoryInterface
             DB::beginTransaction();
             try{
     
+                //deletando veículo vinculado ao motorista
+                $vehiclRepo = new VehicleRepository(new Vehicle);
+                $vehiclRepo->deleteVehicle($driver->vehicle_id);
+                
                 $driver->delete();
-    
+
                 DB::commit();
     
                 return true;

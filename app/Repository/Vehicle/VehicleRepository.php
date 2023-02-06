@@ -87,6 +87,15 @@ class VehicleRepository implements RepositoryInterface
         }
         return 'Nenhum veículo encontrado';
     }
+    public function deleteVehicle(int $id){
+        $vehicle = $this->model->newQuery()->where('id', $id)->first();
+        if($vehicle){
+            $vehicle->delete();
+            return true;
+        } else
+            return 'Veículo não encontrado';
+    }
+
     public function findById(int $modelId, array $columns = ['*'])
     {
         return $this->model->newQuery()
