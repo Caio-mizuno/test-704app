@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('access_tokens', function (Blueprint $table) {
             $table->id();
-            $table->enum('entity',['client','driver'])->nullable();
+            $table->enum('entity',['client','driver','user'])->nullable();
             $table->bigInteger('entity_id')->unsigned()->nullable();
             $table->string('token')->unique();
             $table->timestamp('last_used_at')->nullable();
