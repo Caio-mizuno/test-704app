@@ -3,6 +3,7 @@
 use App\Http\Controllers\Auth\LoginDriversController;
 use App\Http\Controllers\Auth\RegisterDriversController;
 use App\Http\Controllers\Drivers\getProfileController;
+use App\Http\Controllers\Drivers\updateLocationController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -21,4 +22,5 @@ Route::post('register', RegisterDriversController::class);
 
 Route::middleware(['driver.token'])->group(function () {
     Route::get('profile', getProfileController::class);
+    Route::post('updateGPS', updateLocationController::class);
 });
