@@ -2,6 +2,8 @@
 /public/build
 /public/hot
 /public/storage
+/mysql/*
+/public/CUsersPichauDocumentsGitHubtest-704appstoragelogs
 /storage/*.key
 /vendor
 .env
@@ -16,3 +18,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
+docker-compose.override.yml
