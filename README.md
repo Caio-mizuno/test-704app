@@ -26,7 +26,7 @@ Trata-se de um projeto construido para demonstrar minhas habilidades com o larav
 - As únicas rotas públicas da aplicação deverão ser a de login e cadastro
 - Cada motorista só poderá ter um carro ativo cadastrado
 
-## Instruções para rodar o projeto
+## Instruções para rodar o projeto - SEM docker
 
 1. Necessário instalar todas as dependências do projeto, para isso utilize: `composer install`
 2. Necessário estruturar o banco de dados do projeto, para isso utilize: `php artisan migrate`
@@ -35,6 +35,15 @@ Trata-se de um projeto construido para demonstrar minhas habilidades com o larav
 5. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost/docs`
 6. O sistema de Autenticação utilizado foi JWT, então para rotas que não são publicas, utilize `Authorization Bearer {TOKEN}`. Token esse que é gerado a partir do `login` do usuário.
 
+## Instruções para rodar o projeto - COM Docker
+
+1. Configurar o arquivo .env (deixarei um exempo no .env.example)
+2. Instalar todas as dependências do projeto, para isso utilize: `docker-compose build`
+3. Inicializar os containers: `docker-compose up -d`
+4. Estruturar o banco de dados: crie a pasta `mysql` na raiz do projeto, caso não existir, e execute `docker-compose exec php /var/www/html/artisan migrate`
+5. Opcional, em um terminar diferente, para visualizar as rotas disponíveis basta executar o comando `php artisan route:list` dentro do container laravel_php
+6. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost:8081/docs`
+7. O sistema de Autenticação utilizado foi JWT, então para rotas que não são publicas, utilize `Authorization Bearer {TOKEN}`. Token esse que é gerado a partir do `login` do usuário. E se for acessar como um motorista(DRIVER), então tem que passar o token pelo header com a chave TOKEN
 
 
 ## Agradecimento
