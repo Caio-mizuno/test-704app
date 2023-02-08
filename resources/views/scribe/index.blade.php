@@ -27,7 +27,7 @@
             </style>
 
     <script>
-        var baseUrl = "http://localhost";
+        var baseUrl = "http://localhost:8081";
         var useCsrf = Boolean();
         var csrfUrl = "/sanctum/csrf-cookie";
     </script>
@@ -82,6 +82,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETv1-driver-profile">
                                 <a href="#endpoints-GETv1-driver-profile">GET v1/driver/profile</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTv1-driver-updateGPS">
+                                <a href="#endpoints-POSTv1-driver-updateGPS">POST v1/driver/updateGPS</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTv1-user-login">
                                 <a href="#endpoints-POSTv1-user-login">POST v1/user/login</a>
                             </li>
@@ -117,7 +120,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 6, 2023</li>
+        <li>Last updated: February 8, 2023</li>
     </ul>
 </div>
 
@@ -126,7 +129,7 @@
     <div class="content">
         <h1 id="introduction">Introduction</h1>
 <aside>
-    <strong>Base URL</strong>: <code>http://localhost</code>
+    <strong>Base URL</strong>: <code>http://localhost:8081</code>
 </aside>
 <p>This documentation aims to provide all the information you need to work with our API.</p>
 <aside>As you scroll, you'll see code examples for working with the API in different programming languages in the dark area to the right (or as part of the content on mobile).
@@ -154,29 +157,31 @@ You can switch the language used with the tabs at the top right (or from the nav
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/v1/driver/login" \
+    "http://localhost:8081/v1/driver/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"phone_number\": \"sit\",
-    \"password\": \"itaque\"
+    \"phone_number\": \"qui\",
+    \"password\": \"non\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/driver/login"
+    "http://localhost:8081/v1/driver/login"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "phone_number": "sit",
-    "password": "itaque"
+    "phone_number": "qui",
+    "password": "non"
 };
 
 fetch(url, {
@@ -189,15 +194,16 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/v1/driver/login',
+    'http://localhost:8081/v1/driver/login',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'phone_number' =&gt; 'sit',
-            'password' =&gt; 'itaque',
+            'phone_number' =&gt; 'qui',
+            'password' =&gt; 'non',
         ],
     ]
 );
@@ -287,6 +293,17 @@ x-ratelimit-remaining: 59
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-driver-login"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -294,10 +311,10 @@ x-ratelimit-remaining: 59
  &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="POSTv1-driver-login"
-               value="sit"
+               value="qui"
                data-component="body">
     <br>
-<p>Example: <code>sit</code></p>
+<p>Example: <code>qui</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -305,10 +322,10 @@ x-ratelimit-remaining: 59
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTv1-driver-login"
-               value="itaque"
+               value="non"
                data-component="body">
     <br>
-<p>Example: <code>itaque</code></p>
+<p>Example: <code>non</code></p>
         </div>
         </form>
 
@@ -325,45 +342,47 @@ x-ratelimit-remaining: 59
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/v1/driver/register" \
+    "http://localhost:8081/v1/driver/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"phone_number\": \"accusantium\",
-    \"password\": \"ab\",
-    \"first_name\": \"aut\",
-    \"email\": \"est\",
-    \"gender\": \"at\",
-    \"birth_date\": \"sed\",
-    \"license\": \"quia\",
-    \"dt_license_expired\": \"voluptas\",
-    \"plate\": \"suscipit\",
-    \"ride_model\": \"dignissimos\"
+    \"phone_number\": \"aperiam\",
+    \"password\": \"voluptatem\",
+    \"first_name\": \"ea\",
+    \"email\": \"eius\",
+    \"gender\": \"aut\",
+    \"birth_date\": \"officia\",
+    \"license\": \"et\",
+    \"dt_license_expired\": \"molestiae\",
+    \"plate\": \"voluptate\",
+    \"ride_model\": \"sed\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/driver/register"
+    "http://localhost:8081/v1/driver/register"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "phone_number": "accusantium",
-    "password": "ab",
-    "first_name": "aut",
-    "email": "est",
-    "gender": "at",
-    "birth_date": "sed",
-    "license": "quia",
-    "dt_license_expired": "voluptas",
-    "plate": "suscipit",
-    "ride_model": "dignissimos"
+    "phone_number": "aperiam",
+    "password": "voluptatem",
+    "first_name": "ea",
+    "email": "eius",
+    "gender": "aut",
+    "birth_date": "officia",
+    "license": "et",
+    "dt_license_expired": "molestiae",
+    "plate": "voluptate",
+    "ride_model": "sed"
 };
 
 fetch(url, {
@@ -376,23 +395,24 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/v1/driver/register',
+    'http://localhost:8081/v1/driver/register',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'phone_number' =&gt; 'accusantium',
-            'password' =&gt; 'ab',
-            'first_name' =&gt; 'aut',
-            'email' =&gt; 'est',
-            'gender' =&gt; 'at',
-            'birth_date' =&gt; 'sed',
-            'license' =&gt; 'quia',
-            'dt_license_expired' =&gt; 'voluptas',
-            'plate' =&gt; 'suscipit',
-            'ride_model' =&gt; 'dignissimos',
+            'phone_number' =&gt; 'aperiam',
+            'password' =&gt; 'voluptatem',
+            'first_name' =&gt; 'ea',
+            'email' =&gt; 'eius',
+            'gender' =&gt; 'aut',
+            'birth_date' =&gt; 'officia',
+            'license' =&gt; 'et',
+            'dt_license_expired' =&gt; 'molestiae',
+            'plate' =&gt; 'voluptate',
+            'ride_model' =&gt; 'sed',
         ],
     ]
 );
@@ -482,6 +502,17 @@ x-ratelimit-remaining: 58
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-driver-register"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -489,10 +520,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="POSTv1-driver-register"
-               value="accusantium"
+               value="aperiam"
                data-component="body">
     <br>
-<p>Example: <code>accusantium</code></p>
+<p>Example: <code>aperiam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -500,10 +531,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTv1-driver-register"
-               value="ab"
+               value="voluptatem"
                data-component="body">
     <br>
-<p>Example: <code>ab</code></p>
+<p>Example: <code>voluptatem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
@@ -511,10 +542,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="first_name"                data-endpoint="POSTv1-driver-register"
-               value="aut"
+               value="ea"
                data-component="body">
     <br>
-<p>Example: <code>aut</code></p>
+<p>Example: <code>ea</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -533,10 +564,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTv1-driver-register"
-               value="est"
+               value="eius"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>eius</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -544,10 +575,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTv1-driver-register"
-               value="at"
+               value="aut"
                data-component="body">
     <br>
-<p>Example: <code>at</code></p>
+<p>Example: <code>aut</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>birth_date</code></b>&nbsp;&nbsp;
@@ -555,10 +586,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="birth_date"                data-endpoint="POSTv1-driver-register"
-               value="sed"
+               value="officia"
                data-component="body">
     <br>
-<p>Example: <code>sed</code></p>
+<p>Example: <code>officia</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>license</code></b>&nbsp;&nbsp;
@@ -566,10 +597,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="license"                data-endpoint="POSTv1-driver-register"
-               value="quia"
+               value="et"
                data-component="body">
     <br>
-<p>Example: <code>quia</code></p>
+<p>Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>dt_license_expired</code></b>&nbsp;&nbsp;
@@ -577,10 +608,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="dt_license_expired"                data-endpoint="POSTv1-driver-register"
-               value="voluptas"
+               value="molestiae"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>molestiae</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>payment_style</code></b>&nbsp;&nbsp;
@@ -599,10 +630,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="plate"                data-endpoint="POSTv1-driver-register"
-               value="suscipit"
+               value="voluptate"
                data-component="body">
     <br>
-<p>Example: <code>suscipit</code></p>
+<p>Example: <code>voluptate</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
@@ -665,10 +696,10 @@ x-ratelimit-remaining: 58
  &nbsp;
                 <input type="text" style="display: none"
                name="ride_model"                data-endpoint="POSTv1-driver-register"
-               value="dignissimos"
+               value="sed"
                data-component="body">
     <br>
-<p>Example: <code>dignissimos</code></p>
+<p>Example: <code>sed</code></p>
         </div>
         </form>
 
@@ -685,19 +716,21 @@ x-ratelimit-remaining: 58
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/driver/profile" \
+    --get "http://localhost:8081/v1/driver/profile" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/driver/profile"
+    "http://localhost:8081/v1/driver/profile"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 fetch(url, {
@@ -709,11 +742,12 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/v1/driver/profile',
+    'http://localhost:8081/v1/driver/profile',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
     ]
 );
@@ -803,6 +837,164 @@ x-ratelimit-remaining: 57
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="GETv1-driver-profile"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
+                        </form>
+
+                    <h2 id="endpoints-POSTv1-driver-updateGPS">POST v1/driver/updateGPS</h2>
+
+<p>
+</p>
+
+
+
+<span id="example-requests-POSTv1-driver-updateGPS">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://localhost:8081/v1/driver/updateGPS" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://localhost:8081/v1/driver/updateGPS"
+);
+
+const headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+
+<div class="php-example">
+    <pre><code class="language-php">$client = new \GuzzleHttp\Client();
+$response = $client-&gt;post(
+    'http://localhost:8081/v1/driver/updateGPS',
+    [
+        'headers' =&gt; [
+            'Content-Type' =&gt; 'application/json',
+            'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
+        ],
+    ]
+);
+$body = $response-&gt;getBody();
+print_r(json_decode((string) $body));</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTv1-driver-updateGPS">
+            <blockquote>
+            <p>Example response (500):</p>
+        </blockquote>
+                <details class="annotation">
+            <summary style="cursor: pointer;">
+                <small onclick="textContent = parentElement.parentElement.open ? 'Show headers' : 'Hide headers'">Show headers</small>
+            </summary>
+            <pre><code class="language-http">cache-control: no-cache, private
+content-type: application/json
+x-ratelimit-limit: 60
+x-ratelimit-remaining: 56
+ </code></pre></details>         <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;error&quot;: &quot;Token inv&aacute;lido!&quot;
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTv1-driver-updateGPS" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTv1-driver-updateGPS"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTv1-driver-updateGPS" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTv1-driver-updateGPS" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTv1-driver-updateGPS"></code></pre>
+</span>
+<form id="form-POSTv1-driver-updateGPS" data-method="POST"
+      data-path="v1/driver/updateGPS"
+      data-authed="0"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTv1-driver-updateGPS', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTv1-driver-updateGPS"
+                    onclick="tryItOut('POSTv1-driver-updateGPS');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTv1-driver-updateGPS"
+                    onclick="cancelTryOut('POSTv1-driver-updateGPS');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTv1-driver-updateGPS" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>v1/driver/updateGPS</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTv1-driver-updateGPS"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTv1-driver-updateGPS"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-driver-updateGPS"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                         </form>
 
                     <h2 id="endpoints-POSTv1-user-login">POST v1/user/login</h2>
@@ -818,29 +1010,31 @@ x-ratelimit-remaining: 57
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/v1/user/login" \
+    "http://localhost:8081/v1/user/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"email\": \"incidunt\",
-    \"password\": \"sed\"
+    \"email\": \"iusto\",
+    \"password\": \"error\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/login"
+    "http://localhost:8081/v1/user/login"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "email": "incidunt",
-    "password": "sed"
+    "email": "iusto",
+    "password": "error"
 };
 
 fetch(url, {
@@ -853,15 +1047,16 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/v1/user/login',
+    'http://localhost:8081/v1/user/login',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'email' =&gt; 'incidunt',
-            'password' =&gt; 'sed',
+            'email' =&gt; 'iusto',
+            'password' =&gt; 'error',
         ],
     ]
 );
@@ -881,7 +1076,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 56
+x-ratelimit-remaining: 55
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -951,6 +1146,17 @@ x-ratelimit-remaining: 56
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-user-login"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -958,10 +1164,10 @@ x-ratelimit-remaining: 56
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTv1-user-login"
-               value="incidunt"
+               value="iusto"
                data-component="body">
     <br>
-<p>Example: <code>incidunt</code></p>
+<p>Example: <code>iusto</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -969,10 +1175,10 @@ x-ratelimit-remaining: 56
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTv1-user-login"
-               value="sed"
+               value="error"
                data-component="body">
     <br>
-<p>Example: <code>sed</code></p>
+<p>Example: <code>error</code></p>
         </div>
         </form>
 
@@ -989,31 +1195,33 @@ x-ratelimit-remaining: 56
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/v1/user/register" \
+    "http://localhost:8081/v1/user/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"name\": \"et\",
-    \"email\": \"voluptas\",
-    \"password\": \"dolor\"
+    \"name\": \"vero\",
+    \"email\": \"laboriosam\",
+    \"password\": \"quo\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/register"
+    "http://localhost:8081/v1/user/register"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "name": "et",
-    "email": "voluptas",
-    "password": "dolor"
+    "name": "vero",
+    "email": "laboriosam",
+    "password": "quo"
 };
 
 fetch(url, {
@@ -1026,16 +1234,17 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/v1/user/register',
+    'http://localhost:8081/v1/user/register',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'name' =&gt; 'et',
-            'email' =&gt; 'voluptas',
-            'password' =&gt; 'dolor',
+            'name' =&gt; 'vero',
+            'email' =&gt; 'laboriosam',
+            'password' =&gt; 'quo',
         ],
     ]
 );
@@ -1055,17 +1264,17 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 55
+x-ratelimit-remaining: 54
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
     &quot;success&quot;: true,
     &quot;user&quot;: {
-        &quot;name&quot;: &quot;et&quot;,
-        &quot;email&quot;: &quot;voluptas&quot;,
-        &quot;updated_at&quot;: &quot;2023-02-06T15:23:00.000000Z&quot;,
-        &quot;created_at&quot;: &quot;2023-02-06T15:23:00.000000Z&quot;,
-        &quot;id&quot;: 14
+        &quot;name&quot;: &quot;vero&quot;,
+        &quot;email&quot;: &quot;laboriosam&quot;,
+        &quot;updated_at&quot;: &quot;2023-02-08T03:13:55.000000Z&quot;,
+        &quot;created_at&quot;: &quot;2023-02-08T03:13:55.000000Z&quot;,
+        &quot;id&quot;: 1
     }
 }</code>
  </pre>
@@ -1131,6 +1340,17 @@ x-ratelimit-remaining: 55
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-user-register"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -1138,10 +1358,10 @@ x-ratelimit-remaining: 55
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTv1-user-register"
-               value="et"
+               value="vero"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>vero</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1149,10 +1369,10 @@ x-ratelimit-remaining: 55
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTv1-user-register"
-               value="voluptas"
+               value="laboriosam"
                data-component="body">
     <br>
-<p>Example: <code>voluptas</code></p>
+<p>Example: <code>laboriosam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1160,10 +1380,10 @@ x-ratelimit-remaining: 55
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTv1-user-register"
-               value="dolor"
+               value="quo"
                data-component="body">
     <br>
-<p>Example: <code>dolor</code></p>
+<p>Example: <code>quo</code></p>
         </div>
         </form>
 
@@ -1180,19 +1400,21 @@ x-ratelimit-remaining: 55
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/user/drivers" \
+    --get "http://localhost:8081/v1/user/drivers" \
     --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
+    --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/drivers"
+    "http://localhost:8081/v1/user/drivers"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 fetch(url, {
@@ -1204,11 +1426,12 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/v1/user/drivers',
+    'http://localhost:8081/v1/user/drivers',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
     ]
 );
@@ -1228,7 +1451,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 54
+x-ratelimit-remaining: 53
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1298,6 +1521,17 @@ x-ratelimit-remaining: 54
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="GETv1-user-drivers"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                         </form>
 
                     <h2 id="endpoints-GETv1-user-driver">GET v1/user/driver</h2>
@@ -1313,27 +1547,29 @@ x-ratelimit-remaining: 54
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://localhost/v1/user/driver" \
+    --get "http://localhost:8081/v1/user/driver" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"driver_id\": \"mollitia\"
+    \"driver_id\": \"atque\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/driver"
+    "http://localhost:8081/v1/user/driver"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "driver_id": "mollitia"
+    "driver_id": "atque"
 };
 
 fetch(url, {
@@ -1346,14 +1582,15 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;get(
-    'http://localhost/v1/user/driver',
+    'http://localhost:8081/v1/user/driver',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'driver_id' =&gt; 'mollitia',
+            'driver_id' =&gt; 'atque',
         ],
     ]
 );
@@ -1373,7 +1610,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 53
+x-ratelimit-remaining: 52
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1443,6 +1680,17 @@ x-ratelimit-remaining: 53
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="GETv1-user-driver"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>driver_id</code></b>&nbsp;&nbsp;
@@ -1450,10 +1698,10 @@ x-ratelimit-remaining: 53
  &nbsp;
                 <input type="text" style="display: none"
                name="driver_id"                data-endpoint="GETv1-user-driver"
-               value="mollitia"
+               value="atque"
                data-component="body">
     <br>
-<p>Example: <code>mollitia</code></p>
+<p>Example: <code>atque</code></p>
         </div>
         </form>
 
@@ -1470,45 +1718,47 @@ x-ratelimit-remaining: 53
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/v1/user/driver" \
+    "http://localhost:8081/v1/user/driver" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"phone_number\": \"nulla\",
-    \"password\": \"consequuntur\",
-    \"first_name\": \"maiores\",
-    \"email\": \"velit\",
-    \"gender\": \"consectetur\",
-    \"birth_date\": \"similique\",
-    \"license\": \"et\",
-    \"dt_license_expired\": \"assumenda\",
-    \"plate\": \"quisquam\",
-    \"ride_model\": \"est\"
+    \"phone_number\": \"numquam\",
+    \"password\": \"veritatis\",
+    \"first_name\": \"qui\",
+    \"email\": \"blanditiis\",
+    \"gender\": \"dolor\",
+    \"birth_date\": \"in\",
+    \"license\": \"sequi\",
+    \"dt_license_expired\": \"rerum\",
+    \"plate\": \"quis\",
+    \"ride_model\": \"eos\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/driver"
+    "http://localhost:8081/v1/user/driver"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "phone_number": "nulla",
-    "password": "consequuntur",
-    "first_name": "maiores",
-    "email": "velit",
-    "gender": "consectetur",
-    "birth_date": "similique",
-    "license": "et",
-    "dt_license_expired": "assumenda",
-    "plate": "quisquam",
-    "ride_model": "est"
+    "phone_number": "numquam",
+    "password": "veritatis",
+    "first_name": "qui",
+    "email": "blanditiis",
+    "gender": "dolor",
+    "birth_date": "in",
+    "license": "sequi",
+    "dt_license_expired": "rerum",
+    "plate": "quis",
+    "ride_model": "eos"
 };
 
 fetch(url, {
@@ -1521,23 +1771,24 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/v1/user/driver',
+    'http://localhost:8081/v1/user/driver',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'phone_number' =&gt; 'nulla',
-            'password' =&gt; 'consequuntur',
-            'first_name' =&gt; 'maiores',
-            'email' =&gt; 'velit',
-            'gender' =&gt; 'consectetur',
-            'birth_date' =&gt; 'similique',
-            'license' =&gt; 'et',
-            'dt_license_expired' =&gt; 'assumenda',
-            'plate' =&gt; 'quisquam',
-            'ride_model' =&gt; 'est',
+            'phone_number' =&gt; 'numquam',
+            'password' =&gt; 'veritatis',
+            'first_name' =&gt; 'qui',
+            'email' =&gt; 'blanditiis',
+            'gender' =&gt; 'dolor',
+            'birth_date' =&gt; 'in',
+            'license' =&gt; 'sequi',
+            'dt_license_expired' =&gt; 'rerum',
+            'plate' =&gt; 'quis',
+            'ride_model' =&gt; 'eos',
         ],
     ]
 );
@@ -1557,7 +1808,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 52
+x-ratelimit-remaining: 51
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1627,6 +1878,17 @@ x-ratelimit-remaining: 52
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-user-driver"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -1634,10 +1896,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="POSTv1-user-driver"
-               value="nulla"
+               value="numquam"
                data-component="body">
     <br>
-<p>Example: <code>nulla</code></p>
+<p>Example: <code>numquam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -1645,10 +1907,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTv1-user-driver"
-               value="consequuntur"
+               value="veritatis"
                data-component="body">
     <br>
-<p>Example: <code>consequuntur</code></p>
+<p>Example: <code>veritatis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>first_name</code></b>&nbsp;&nbsp;
@@ -1656,10 +1918,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="first_name"                data-endpoint="POSTv1-user-driver"
-               value="maiores"
+               value="qui"
                data-component="body">
     <br>
-<p>Example: <code>maiores</code></p>
+<p>Example: <code>qui</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>last_name</code></b>&nbsp;&nbsp;
@@ -1678,10 +1940,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTv1-user-driver"
-               value="velit"
+               value="blanditiis"
                data-component="body">
     <br>
-<p>Example: <code>velit</code></p>
+<p>Example: <code>blanditiis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -1689,10 +1951,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTv1-user-driver"
-               value="consectetur"
+               value="dolor"
                data-component="body">
     <br>
-<p>Example: <code>consectetur</code></p>
+<p>Example: <code>dolor</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>birth_date</code></b>&nbsp;&nbsp;
@@ -1700,10 +1962,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="birth_date"                data-endpoint="POSTv1-user-driver"
-               value="similique"
+               value="in"
                data-component="body">
     <br>
-<p>Example: <code>similique</code></p>
+<p>Example: <code>in</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>license</code></b>&nbsp;&nbsp;
@@ -1711,10 +1973,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="license"                data-endpoint="POSTv1-user-driver"
-               value="et"
+               value="sequi"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>sequi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>dt_license_expired</code></b>&nbsp;&nbsp;
@@ -1722,10 +1984,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="dt_license_expired"                data-endpoint="POSTv1-user-driver"
-               value="assumenda"
+               value="rerum"
                data-component="body">
     <br>
-<p>Example: <code>assumenda</code></p>
+<p>Example: <code>rerum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>payment_style</code></b>&nbsp;&nbsp;
@@ -1744,10 +2006,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="plate"                data-endpoint="POSTv1-user-driver"
-               value="quisquam"
+               value="quis"
                data-component="body">
     <br>
-<p>Example: <code>quisquam</code></p>
+<p>Example: <code>quis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
@@ -1810,10 +2072,10 @@ x-ratelimit-remaining: 52
  &nbsp;
                 <input type="text" style="display: none"
                name="ride_model"                data-endpoint="POSTv1-user-driver"
-               value="est"
+               value="eos"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>eos</code></p>
         </div>
         </form>
 
@@ -1830,27 +2092,29 @@ x-ratelimit-remaining: 52
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request PUT \
-    "http://localhost/v1/user/driver" \
+    "http://localhost:8081/v1/user/driver" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"driver_id\": \"tempora\"
+    \"driver_id\": \"excepturi\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/driver"
+    "http://localhost:8081/v1/user/driver"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "driver_id": "tempora"
+    "driver_id": "excepturi"
 };
 
 fetch(url, {
@@ -1863,14 +2127,15 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;put(
-    'http://localhost/v1/user/driver',
+    'http://localhost:8081/v1/user/driver',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'driver_id' =&gt; 'tempora',
+            'driver_id' =&gt; 'excepturi',
         ],
     ]
 );
@@ -1890,7 +2155,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 51
+x-ratelimit-remaining: 50
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -1960,6 +2225,17 @@ x-ratelimit-remaining: 51
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="PUTv1-user-driver"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>driver_id</code></b>&nbsp;&nbsp;
@@ -1967,10 +2243,10 @@ x-ratelimit-remaining: 51
  &nbsp;
                 <input type="text" style="display: none"
                name="driver_id"                data-endpoint="PUTv1-user-driver"
-               value="tempora"
+               value="excepturi"
                data-component="body">
     <br>
-<p>Example: <code>tempora</code></p>
+<p>Example: <code>excepturi</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -2097,27 +2373,29 @@ x-ratelimit-remaining: 51
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request DELETE \
-    "http://localhost/v1/user/driver" \
+    "http://localhost:8081/v1/user/driver" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
     --data "{
-    \"driver_id\": \"temporibus\"
+    \"driver_id\": \"ipsum\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/driver"
+    "http://localhost:8081/v1/user/driver"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 let body = {
-    "driver_id": "temporibus"
+    "driver_id": "ipsum"
 };
 
 fetch(url, {
@@ -2130,14 +2408,15 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;delete(
-    'http://localhost/v1/user/driver',
+    'http://localhost:8081/v1/user/driver',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
         'json' =&gt; [
-            'driver_id' =&gt; 'temporibus',
+            'driver_id' =&gt; 'ipsum',
         ],
     ]
 );
@@ -2157,7 +2436,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 50
+x-ratelimit-remaining: 49
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2227,6 +2506,17 @@ x-ratelimit-remaining: 50
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="DELETEv1-user-driver"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
+            </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>driver_id</code></b>&nbsp;&nbsp;
@@ -2234,10 +2524,10 @@ x-ratelimit-remaining: 50
  &nbsp;
                 <input type="text" style="display: none"
                name="driver_id"                data-endpoint="DELETEv1-user-driver"
-               value="temporibus"
+               value="ipsum"
                data-component="body">
     <br>
-<p>Example: <code>temporibus</code></p>
+<p>Example: <code>ipsum</code></p>
         </div>
         </form>
 
@@ -2254,20 +2544,22 @@ x-ratelimit-remaining: 50
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://localhost/v1/user/driver/search" \
+    "http://localhost:8081/v1/user/driver/search" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
+    --header "TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo" \
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://localhost/v1/user/driver/search"
+    "http://localhost:8081/v1/user/driver/search"
 );
 
 const headers = {
     "Content-Type": "application/json",
     "Accept": "application/json",
+    "TOKEN": "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo",
 };
 
 fetch(url, {
@@ -2279,11 +2571,12 @@ fetch(url, {
 <div class="php-example">
     <pre><code class="language-php">$client = new \GuzzleHttp\Client();
 $response = $client-&gt;post(
-    'http://localhost/v1/user/driver/search',
+    'http://localhost:8081/v1/user/driver/search',
     [
         'headers' =&gt; [
             'Content-Type' =&gt; 'application/json',
             'Accept' =&gt; 'application/json',
+            'TOKEN' =&gt; 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo',
         ],
     ]
 );
@@ -2303,7 +2596,7 @@ print_r(json_decode((string) $body));</code></pre></div>
             <pre><code class="language-http">cache-control: no-cache, private
 content-type: application/json
 x-ratelimit-limit: 60
-x-ratelimit-remaining: 49
+x-ratelimit-remaining: 48
  </code></pre></details>         <pre>
 
 <code class="language-json" style="max-height: 300px;">{
@@ -2372,6 +2665,17 @@ x-ratelimit-remaining: 49
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>TOKEN</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="TOKEN"                data-endpoint="POSTv1-user-driver-search"
+               value="eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo"
+               data-component="header">
+    <br>
+<p>Example: <code>eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo</code></p>
             </div>
                                 <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">

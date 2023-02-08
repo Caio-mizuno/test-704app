@@ -19,6 +19,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -28,19 +29,19 @@ endpoints:
         name: phone_number
         description: ''
         required: true
-        example: sit
+        example: qui
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: itaque
+        example: non
         type: string
         custom: []
     cleanBodyParameters:
-      phone_number: sit
-      password: itaque
+      phone_number: qui
+      password: non
     fileParameters: []
     responses:
       -
@@ -75,6 +76,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -84,21 +86,21 @@ endpoints:
         name: phone_number
         description: ''
         required: true
-        example: accusantium
+        example: aperiam
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: ab
+        example: voluptatem
         type: string
         custom: []
       first_name:
         name: first_name
         description: ''
         required: true
-        example: aut
+        example: ea
         type: string
         custom: []
       last_name:
@@ -112,35 +114,35 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: est
+        example: eius
         type: string
         custom: []
       gender:
         name: gender
         description: ''
         required: true
-        example: at
+        example: aut
         type: string
         custom: []
       birth_date:
         name: birth_date
         description: ''
         required: true
-        example: sed
+        example: officia
         type: string
         custom: []
       license:
         name: license
         description: ''
         required: true
-        example: quia
+        example: et
         type: string
         custom: []
       dt_license_expired:
         name: dt_license_expired
         description: ''
         required: true
-        example: voluptas
+        example: molestiae
         type: string
         custom: []
       payment_style:
@@ -154,7 +156,7 @@ endpoints:
         name: plate
         description: ''
         required: true
-        example: suscipit
+        example: voluptate
         type: string
         custom: []
       year:
@@ -196,20 +198,20 @@ endpoints:
         name: ride_model
         description: ''
         required: true
-        example: dignissimos
+        example: sed
         type: string
         custom: []
     cleanBodyParameters:
-      phone_number: accusantium
-      password: ab
-      first_name: aut
-      email: est
-      gender: at
-      birth_date: sed
-      license: quia
-      dt_license_expired: voluptas
-      plate: suscipit
-      ride_model: dignissimos
+      phone_number: aperiam
+      password: voluptatem
+      first_name: ea
+      email: eius
+      gender: aut
+      birth_date: officia
+      license: et
+      dt_license_expired: molestiae
+      plate: voluptate
+      ride_model: sed
     fileParameters: []
     responses:
       -
@@ -244,6 +246,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -271,6 +274,47 @@ endpoints:
   -
     httpMethods:
       - POST
+    uri: v1/driver/updateGPS
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: ''
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 500
+        content: '{"success":false,"error":"Token inv\u00e1lido!"}'
+        headers:
+          cache-control: 'no-cache, private'
+          content-type: application/json
+          x-ratelimit-limit: '60'
+          x-ratelimit-remaining: '56'
+        description: null
+        custom: []
+    responseFields: []
+    auth: []
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - POST
     uri: v1/user/login
     metadata:
       groupName: Endpoints
@@ -284,6 +328,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -293,19 +338,19 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: incidunt
+        example: iusto
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: sed
+        example: error
         type: string
         custom: []
     cleanBodyParameters:
-      email: incidunt
-      password: sed
+      email: iusto
+      password: error
     fileParameters: []
     responses:
       -
@@ -315,7 +360,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '56'
+          x-ratelimit-remaining: '55'
         description: null
         custom: []
     responseFields: []
@@ -340,6 +385,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -349,37 +395,37 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: et
+        example: vero
         type: string
         custom: []
       email:
         name: email
         description: ''
         required: true
-        example: voluptas
+        example: laboriosam
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: dolor
+        example: quo
         type: string
         custom: []
     cleanBodyParameters:
-      name: et
-      email: voluptas
-      password: dolor
+      name: vero
+      email: laboriosam
+      password: quo
     fileParameters: []
     responses:
       -
         status: 200
-        content: '{"success":true,"user":{"name":"et","email":"voluptas","updated_at":"2023-02-06T15:23:00.000000Z","created_at":"2023-02-06T15:23:00.000000Z","id":14}}'
+        content: '{"success":true,"user":{"name":"vero","email":"laboriosam","updated_at":"2023-02-08T03:13:55.000000Z","created_at":"2023-02-08T03:13:55.000000Z","id":1}}'
         headers:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '55'
+          x-ratelimit-remaining: '54'
         description: null
         custom: []
     responseFields: []
@@ -404,6 +450,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -419,7 +466,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '54'
+          x-ratelimit-remaining: '53'
         description: null
         custom: []
     responseFields: []
@@ -444,6 +491,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -453,11 +501,11 @@ endpoints:
         name: driver_id
         description: ''
         required: true
-        example: mollitia
+        example: atque
         type: string
         custom: []
     cleanBodyParameters:
-      driver_id: mollitia
+      driver_id: atque
     fileParameters: []
     responses:
       -
@@ -467,7 +515,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '53'
+          x-ratelimit-remaining: '52'
         description: null
         custom: []
     responseFields: []
@@ -492,6 +540,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -501,21 +550,21 @@ endpoints:
         name: phone_number
         description: ''
         required: true
-        example: nulla
+        example: numquam
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: consequuntur
+        example: veritatis
         type: string
         custom: []
       first_name:
         name: first_name
         description: ''
         required: true
-        example: maiores
+        example: qui
         type: string
         custom: []
       last_name:
@@ -529,35 +578,35 @@ endpoints:
         name: email
         description: ''
         required: true
-        example: velit
+        example: blanditiis
         type: string
         custom: []
       gender:
         name: gender
         description: ''
         required: true
-        example: consectetur
+        example: dolor
         type: string
         custom: []
       birth_date:
         name: birth_date
         description: ''
         required: true
-        example: similique
+        example: in
         type: string
         custom: []
       license:
         name: license
         description: ''
         required: true
-        example: et
+        example: sequi
         type: string
         custom: []
       dt_license_expired:
         name: dt_license_expired
         description: ''
         required: true
-        example: assumenda
+        example: rerum
         type: string
         custom: []
       payment_style:
@@ -571,7 +620,7 @@ endpoints:
         name: plate
         description: ''
         required: true
-        example: quisquam
+        example: quis
         type: string
         custom: []
       year:
@@ -613,20 +662,20 @@ endpoints:
         name: ride_model
         description: ''
         required: true
-        example: est
+        example: eos
         type: string
         custom: []
     cleanBodyParameters:
-      phone_number: nulla
-      password: consequuntur
-      first_name: maiores
-      email: velit
-      gender: consectetur
-      birth_date: similique
-      license: et
-      dt_license_expired: assumenda
-      plate: quisquam
-      ride_model: est
+      phone_number: numquam
+      password: veritatis
+      first_name: qui
+      email: blanditiis
+      gender: dolor
+      birth_date: in
+      license: sequi
+      dt_license_expired: rerum
+      plate: quis
+      ride_model: eos
     fileParameters: []
     responses:
       -
@@ -636,7 +685,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '52'
+          x-ratelimit-remaining: '51'
         description: null
         custom: []
     responseFields: []
@@ -661,6 +710,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -670,7 +720,7 @@ endpoints:
         name: driver_id
         description: ''
         required: true
-        example: tempora
+        example: excepturi
         type: string
         custom: []
       phone_number:
@@ -744,7 +794,7 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      driver_id: tempora
+      driver_id: excepturi
     fileParameters: []
     responses:
       -
@@ -754,7 +804,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '51'
+          x-ratelimit-remaining: '50'
         description: null
         custom: []
     responseFields: []
@@ -779,6 +829,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -788,11 +839,11 @@ endpoints:
         name: driver_id
         description: ''
         required: true
-        example: temporibus
+        example: ipsum
         type: string
         custom: []
     cleanBodyParameters:
-      driver_id: temporibus
+      driver_id: ipsum
     fileParameters: []
     responses:
       -
@@ -802,7 +853,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '50'
+          x-ratelimit-remaining: '49'
         description: null
         custom: []
     responseFields: []
@@ -827,6 +878,7 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
+      TOKEN: eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJkYXRhIjp7ImlzcyI6Im1vb3ZlYXBwIiwibmFtZSI6ImNhaW8gVGVzdGUiLCJlbWFpbCI6ImNhaW9AbWl6dW5vLmNvbSIsInBob25lX251bWJlciI6IjEyMzEyMyIsInRpbWUiOiJ0b2RheTE2NzU3MzM0OTcifX0=.sGbKqSI_aYJIFxT8_hVNVN29FRKgIn3YWDu1EAJVoqo
     urlParameters: []
     cleanUrlParameters: []
     queryParameters: []
@@ -870,7 +922,7 @@ endpoints:
           cache-control: 'no-cache, private'
           content-type: application/json
           x-ratelimit-limit: '60'
-          x-ratelimit-remaining: '49'
+          x-ratelimit-remaining: '48'
         description: null
         custom: []
     responseFields: []
