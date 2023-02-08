@@ -46,6 +46,8 @@ Trata-se de um projeto construido para demonstrar minhas habilidades com o larav
 7. Caso queira observar a documentação, basta acessar http://<Rota do serviço>`/docs` no navegador. Exemplo: `http://localhost:8081/docs`
 8. O sistema de Autenticação utilizado foi JWT, então para rotas que não são publicas, utilize `Authorization Bearer {TOKEN}`. Token esse que é gerado a partir do `login` do usuário. E se for acessar como um motorista(DRIVER), então tem que passar o token pelo header com a chave TOKEN.
 
+## Link do desenho da estrutura da fila do redis
+(https://miro.com/welcomeonboard/Y2lzVUl2M3luUkE2ZGZqWlNXeWVOa3E5azFoMVJ2U2JycFh0eklPQlJCUGdMaENwRnFrUFlYNGpyaGRNcksyaXwzMDc0NDU3MzY1NzE3MTUyNDYzfDI=?share_link_id=88803241854)
 
 ## Agradecimento
 
