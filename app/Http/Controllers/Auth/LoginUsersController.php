@@ -22,7 +22,7 @@ class LoginUsersController extends Controller
 
             $token = MakeJwt([
                 'data' => [
-                    'iss' => 'mooveapp',
+                    'iss' => 'sdgh4262g',
                     'name' => $user->name,
                     'email' => $user->email,
                     'time' => 'today'.time()
